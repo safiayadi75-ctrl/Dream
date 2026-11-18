@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="رحلتي من البكالوريا إلى الاستوديو والحياة التي أحلم بها.">
+<style>:root{color-scheme:light}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>خريطة الحلم</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+/* Concept: a storyboard. Every life stage is one film frame, linked by a flowchart in the header. Amber is the projector light. */
+:root{
+  --bg:#EDF0F7; --panel:#E1E6F1; --card:#FFFFFF; --ink:#141A2E; --muted:#525C78; --line:#BFC8DC;
+  --accent:#F2A010; --accent-ink:#8A5200; --on-accent:#1A1200;
+  --teal:#0B7A72; --on-teal:#FFFFFF; --coral:#E4574E;
+  --f-display:"Reem Kufi","Segoe UI",Tahoma,sans-serif;
+  --f-body:"Tajawal","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1121; --panel:#121A31; --card:#18213B; --ink:#EDF0FA; --muted:#9AA5C6; --line:#2B3658;
+    --accent:#FFB52E; --accent-ink:#FFB52E; --on-accent:#1A1200;
+    --teal:#3DD6C6; --on-teal:#07211E; --coral:#FF7C72; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1121; --panel:#121A31; --card:#18213B; --ink:#EDF0FA; --muted:#9AA5C6; --line:#2B3658;
+  --accent:#FFB52E; --accent-ink:#FFB52E; --on-accent:#1A1200;
+  --teal:#3DD6C6; --on-teal:#07211E; --coral:#FF7C72; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background-color:var(--bg); background-image:radial-gradient(color-mix(in srgb,var(--line) 75%,transparent) 1.2px,transparent 1.4px); background-size:26px 26px; color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.7; direction:rtl;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
+.wrap{max-width:1040px; margin-inline:auto}
+
+/* header flowchart */
+.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--bg); padding-block:12px 14px; border-bottom:1px solid var(--line)}
+.top-row{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap}
+.brand{font-family:var(--f-display); font-weight:700; font-size:20px; display:flex; align-items:center; gap:8px}
+.brand i{width:10px; height:10px; background:var(--accent); border-radius:50%; display:inline-block}
+.now{color:var(--muted); font-size:14px}
+.flow{display:flex; align-items:center; margin-top:12px}
+.node{flex:none; width:32px; height:32px; border-radius:50%; border:2px solid var(--line); background:var(--bg); color:var(--muted);
+  font:700 13px var(--f-display); display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:0; cursor:pointer}
+.node:hover{border-color:var(--accent)}
+.node.done{border-color:var(--accent); color:var(--accent-ink)}
+.node[aria-current="step"]{border-color:var(--accent); background:var(--accent); color:var(--on-accent); box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 28%,transparent)}
+.node .lab{display:none}
+.link{flex:1; height:2px; min-width:4px; background:var(--line)}
+.link.done{background:var(--accent)}
+.node:focus-visible,.btn:focus-visible{outline:3px solid var(--teal); outline-offset:3px}
+@media (min-width:760px){
+  .node{width:auto; height:36px; border-radius:18px; padding:0 14px; font-size:14px}
+  .node .lab{display:inline}
+  .node.first .n{display:none}
+}
+
+/* page layout */
+main{padding-block:30px 64px}
+.page{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); grid-template-areas:"txt art" "txt extras"; gap:clamp(20px,3.5vw,32px) clamp(24px,5vw,60px); align-items:start}
+.txt-col{grid-area:txt; align-self:center}
+.art{grid-area:art}
+.extras{grid-area:extras; min-width:0}
+.page.enter .extras{animation:rise .55s .35s both}
+.page.enter .txt-col{animation:rise .55s both}
+.txt-col{min-width:0}
+.art{min-width:0}
+@media (max-width:820px){ .page{grid-template-columns:minmax(0,1fr); grid-template-areas:"art" "txt" "extras"} }
+.eyebrow{display:flex; align-items:center; gap:10px; color:var(--accent-ink); font:700 15px var(--f-display)}
+.eyebrow::before{content:""; width:28px; height:3px; background:var(--accent); border-radius:2px}
+h1{font:700 clamp(34px,6.4vw,58px)/1.2 var(--f-display); margin:10px 0 14px; text-wrap:balance; outline:none}
+.lead{font-size:19px; color:var(--muted); margin:0; max-width:34em}
+
+/* mini flowchart */
+.chain{list-style:none; margin:28px 0 0; padding:0}
+.step{position:relative; display:grid; grid-template-columns:36px minmax(0,1fr); gap:14px; padding-bottom:18px; animation:rise .55s both; animation-delay:calc(var(--i) * 90ms + 200ms)}
+.step:not(:last-child)::after{content:""; position:absolute; inset-inline-start:17px; top:38px; bottom:2px; width:2px;
+  background:repeating-linear-gradient(to bottom,var(--line) 0 5px,transparent 5px 9px)}
+.mk{width:36px; height:36px; display:grid; place-items:center; font:700 14px var(--f-display); background:var(--card); border:2px solid var(--ink); border-radius:50%; color:var(--ink)}
+.mk.dec{border:0; border-radius:0; background:var(--teal); color:var(--on-teal); clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.mk.goal{border:0; border-radius:0; background:var(--accent); clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.txt{padding-top:3px; min-width:0}
+.txt b{display:block; font-weight:700; font-size:18px; line-height:1.5}
+.txt span{display:block; color:var(--muted); font-size:15.5px; line-height:1.55}
+
+/* chips, tasks, mantra */
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 0; padding:0; list-style:none}
+.chip{unicode-bidi:plaintext; font:500 14px var(--f-body); padding:3px 13px; border:1.5px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink)}
+.chip::before{content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-inline-end:8px; background:var(--accent)}
+.chip:nth-child(3n+2)::before{background:var(--teal)}
+.chip:nth-child(3n+3)::before{background:var(--coral)}
+.tasks{background:var(--card); border:2px solid var(--ink); border-radius:6px; padding:14px 18px 8px}
+.tasks-h{display:flex; justify-content:space-between; align-items:baseline; padding-bottom:8px}
+.tasks-h b{font:700 17px var(--f-display)}
+.cnt{font:700 14px var(--f-body); color:var(--accent-ink); direction:ltr}
+.task{display:flex; align-items:flex-start; gap:12px; padding:9px 0; border-top:1px dashed var(--line); cursor:pointer; font-size:16px; line-height:1.55}
+.task input{appearance:none; -webkit-appearance:none; width:22px; height:22px; margin:2px 0 0; flex:none; border:2px solid var(--ink); border-radius:5px; background:transparent; display:grid; place-content:center; cursor:pointer}
+.task input:checked{background:var(--accent); border-color:var(--accent)}
+.task input:checked::after{content:""; width:11px; height:6px; border-left:3px solid var(--on-accent); border-bottom:3px solid var(--on-accent); transform:rotate(-45deg) translate(1px,-1px)}
+.task input:focus-visible{outline:3px solid var(--teal); outline-offset:3px}
+.task input:checked + span{color:var(--muted); text-decoration:line-through}
+.mantra{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; margin:16px 0 0}
+.mantra small{color:var(--muted); font-size:14px}
+.mantra b{unicode-bidi:plaintext; font:700 21px var(--f-body); color:var(--accent-ink)}
+.stop{font:inherit; color:inherit; background:none; border:0; padding:0; text-align:start; cursor:pointer; display:block; width:100%}
+.stop:hover b{color:var(--accent-ink)}
+.stop:focus-visible{outline:3px solid var(--teal); outline-offset:4px}
+.foot{display:flex; justify-content:center; margin:10px 0 0; padding:0 0 40px}
+.foot span{display:inline-flex; align-items:center; gap:10px; font:700 17px var(--f-body); color:var(--accent-ink); border:2.5px solid var(--accent); border-radius:8px; padding:9px 20px; transform:rotate(-2deg); background:color-mix(in srgb,var(--accent) 14%,transparent); unicode-bidi:plaintext}
+.foot span::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--accent); animation:pulse 2s ease-in-out infinite}
+
+/* controls */
+.ctrl{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px}
+.btn{font:700 16px var(--f-body); display:inline-flex; align-items:center; gap:10px; padding:12px 22px; border-radius:10px; cursor:pointer;
+  border:2px solid var(--ink); background:transparent; color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.btn .flip{transform:scaleX(-1)}
+
+/* film frame */
+.frame{position:relative; background:var(--panel); border:2px solid var(--ink); border-radius:6px; padding:30px 8px}
+.frame::before,.frame::after{content:""; position:absolute; left:12px; right:12px; height:9px; border-radius:2px;
+  background:repeating-linear-gradient(90deg,var(--bg) 0 12px,transparent 12px 24px)}
+.frame::before{top:9px}
+.frame::after{bottom:9px}
+.frame svg{display:block; width:100%; height:auto; max-width:100%}
+
+/* svg vocabulary */
+.o{stroke:var(--ink); stroke-width:3; stroke-linejoin:round; stroke-linecap:round}
+.sl{fill:none; stroke:var(--ink); stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+.fa{fill:var(--accent)} .ft{fill:var(--teal)} .fc{fill:var(--coral)} .fk{fill:var(--card)} .fp{fill:var(--panel)} .fi{fill:var(--ink)} .fl{fill:var(--line)}
+.st{font-family:var(--f-display); font-weight:700; fill:var(--ink); font-size:15px; text-anchor:middle}
+.sm{font-family:var(--f-body); font-weight:500; fill:var(--muted); font-size:13px; text-anchor:middle}
+.onacc{font-family:var(--f-display); font-weight:700; fill:var(--on-accent); text-anchor:middle}
+.fx{transform-box:fill-box; transform-origin:center}
+
+/* motion */
+@keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+@keyframes tw{0%,100%{opacity:.2} 50%{opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)}}
+@keyframes ring{0%{transform:scale(1); opacity:.6} 100%{transform:scale(2.3); opacity:0}}
+@keyframes type{0%{transform:scaleX(0)} 30%,80%{transform:scaleX(1)} 95%,100%{transform:scaleX(0)}}
+@keyframes pop{0%,40%{transform:scale(0)} 50%{transform:scale(1.25)} 58%,85%{transform:scale(1)} 95%,100%{transform:scale(0)}}
+@keyframes coin{0%{transform:translateY(0); opacity:0} 15%{opacity:1} 100%{transform:translateY(-72px); opacity:0}}
+@keyframes bounce{
+  0%{transform:translateY(0) scale(1,1); animation-timing-function:cubic-bezier(.55,0,1,.45)}
+  47%{transform:translateY(130px) scale(.92,1.12); animation-timing-function:linear}
+  50%{transform:translateY(130px) scale(1.3,.7); animation-timing-function:linear}
+  53%{transform:translateY(130px) scale(.92,1.12); animation-timing-function:cubic-bezier(0,.55,.45,1)}
+  100%{transform:translateY(0) scale(1,1)}
+}
+@keyframes shadow{0%,100%{transform:scale(.5); opacity:.15} 50%{transform:scale(1.2); opacity:.4}}
+@keyframes strip{to{transform:translateX(120px)}}
+@keyframes build{0%{transform:scaleX(0); opacity:0} 10%,86%{transform:scaleX(1); opacity:1} 96%,100%{transform:scaleX(0); opacity:0}}
+@keyframes pulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.3)}}
+@keyframes dash{to{stroke-dashoffset:-12}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes lit{0%,35%{opacity:.18} 50%,88%{opacity:1} 100%{opacity:.18}}
+@keyframes walk{0%{transform:translateX(0); opacity:0} 10%{opacity:1} 82%{opacity:1} 100%{transform:translateX(-150px); opacity:0}}
+@keyframes drive{0%{transform:translateX(150px); opacity:0} 14%{opacity:1} 50%,82%{transform:translateX(0); opacity:1} 100%{transform:translateX(0); opacity:0}}
+@keyframes beat{0%,60%,100%{transform:scale(1)} 15%{transform:scale(1.2)} 30%{transform:scale(1)} 42%{transform:scale(1.14)}}
+.bob{animation:bob 3.6s ease-in-out infinite}
+.tw{animation:tw 2.8s ease-in-out infinite}
+.sealring{animation:ring 2.4s ease-out infinite}
+.line{transform-box:fill-box; transform-origin:100% 50%; animation:type 4.8s ease-in-out infinite}
+.pass{transform-box:fill-box; transform-origin:center; animation:pop 4.8s ease-in-out infinite}
+.coin{animation:coin 3s ease-in infinite}
+.ball{transform-box:fill-box; transform-origin:50% 100%; animation:bounce 1.6s linear infinite}
+.shade{transform-box:fill-box; transform-origin:center; animation:shadow 1.6s ease-in-out infinite}
+.strip{animation:strip 2.4s linear infinite}
+.blk{transform-box:fill-box; transform-origin:100% 50%; animation:build 6s ease-in-out infinite}
+.pn{transform-box:fill-box; transform-origin:center; animation:pulse 2.2s ease-in-out infinite}
+.flowline{stroke-dasharray:4 8; animation:dash 1s linear infinite}
+.spin{transform-box:fill-box; transform-origin:center; animation:spin 7s linear infinite}
+.win{animation:lit 5s ease-in-out infinite}
+.walk{animation:walk 4.5s linear infinite}
+.drive{animation:drive 7s ease-in-out infinite}
+.heart{transform-box:fill-box; transform-origin:center; animation:beat 2s ease-in-out infinite}
+.wv{animation:tw 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="top-row">
+      <div class="brand"><i></i>خريطة الحلم</div>
+      <div class="now" id="now"></div>
+    </div>
+    <nav class="flow" id="flow" aria-label="مراحل الخريطة"></nav>
+  </header>
+  <main id="stage"></main>
+  <p class="foot"><span>نسخة خاصة · Version privée</span></p>
+</div>
+
+<script>
+(function(){
+  var ORDER=['secret','bac','idea','campus','europe','studio','life','map'];
+  function num(n){return String(n)}
+  function stars(pts){return pts.map(function(p,k){return '<circle class="tw fa" cx="'+p[0]+'" cy="'+p[1]+'" r="'+p[2]+'" style="animation-delay:'+(k*0.37).toFixed(2)+'s"/>'}).join('')}
+
+  var ART={};
+
+  ART.secret='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+    stars([[50,50,3],[345,42,4],[112,92,2],[300,96,3],[30,160,2],[372,170,3],[62,252,2],[352,256,3]])+
+    '<ellipse class="fi fx" cx="200" cy="270" rx="96" ry="8" opacity=".16"/>'+
+    '<g class="bob">'+
+      '<rect x="80" y="100" width="240" height="150" rx="8" class="fk o"/>'+
+      '<path d="M80 244 L172 168 M320 244 L228 168" class="sl" opacity=".35"/>'+
+      '<path d="M80 108 L200 194 L320 108" class="sl"/>'+
+      '<circle class="sealring fc fx" cx="200" cy="194" r="24"/>'+
+      '<circle class="fc o" cx="200" cy="194" r="24"/>'+
+      '<text x="200" y="200" class="onacc" font-size="15">سرّي</text>'+
+    '<text x="200" y="240" class="st" font-size="14">à Asma</text>'+
+    '</g></svg>';
+
+  ART.bac='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+    '<ellipse class="fi" cx="200" cy="268" rx="150" ry="8" opacity=".14"/>'+
+    '<rect x="40" y="224" width="92" height="16" class="fa o"/>'+
+    '<rect x="48" y="208" width="76" height="16" class="ft o"/>'+
+    '<rect x="36" y="192" width="84" height="16" class="fc o"/>'+
+    '<g class="coin" style="animation-delay:0s"><circle cx="58" cy="172" r="12" class="fa o"/><text x="58" y="176" class="onacc" font-size="9">دج</text></g>'+
+    '<g class="coin" style="animation-delay:1s"><circle cx="92" cy="172" r="12" class="fa o"/><text x="92" y="176" class="onacc" font-size="9">دج</text></g>'+
+    '<g class="coin" style="animation-delay:2s"><circle cx="126" cy="172" r="12" class="fa o"/><text x="126" y="176" class="onacc" font-size="9">دج</text></g>'+
+    '<rect x="150" y="106" width="210" height="136" rx="8" class="fk o"/>'+
+    '<rect x="162" y="118" width="186" height="112" rx="3" class="fp"/>'+
+    '<rect class="line fa" x="180" y="134" width="150" height="9" rx="4.5"/>'+
+    '<rect class="line ft" x="180" y="154" width="110" height="9" rx="4.5" style="animation-delay:.45s"/>'+
+    '<rect class="line fc" x="180" y="174" width="130" height="9" rx="4.5" style="animation-delay:.9s"/>'+
+    '<g class="pass"><circle cx="318" cy="208" r="14" class="ft"/><path d="M311 208 l5 5 l10 -11" class="sl" style="stroke:var(--on-teal);stroke-width:3.5"/></g>'+
+    '<path d="M134 242 H376 L364 258 H146 Z" class="fk o"/>'+
+    '</svg>';
+
+  (function(){
+    var f='';
+    for(var i=-3;i<=7;i++){
+      var x=14+i*60, hi=(((i%2)+2)%2)===0;
+      f+='<rect x="'+x+'" y="28" width="52" height="36" rx="3" class="fk"/><circle cx="'+(x+26)+'" cy="'+(hi?40:54)+'" r="6" class="fa"/>';
+    }
+    ART.idea='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+      '<clipPath id="stripclip"><rect x="10" y="20" width="380" height="52"/></clipPath>'+
+      '<rect x="10" y="20" width="380" height="52" class="fi"/>'+
+      '<g clip-path="url(#stripclip)"><g class="strip">'+f+'</g></g>'+
+      '<ellipse class="shade fi" cx="200" cy="268" rx="30" ry="5"/>'+
+      '<path d="M40 264 H360" class="sl"/>'+
+      '<circle class="ball fa o" cx="200" cy="112" r="22"/>'+
+      '<rect x="52" y="168" width="16" height="30" rx="8" class="fk o"/>'+
+      '<path d="M44 188 Q60 212 76 188 M60 206 V224 M50 224 H70" class="sl"/>'+
+      '<path class="wv sl" d="M88 174 Q97 183 88 192" style="stroke-width:2.5"/>'+
+      '<path class="wv sl" d="M98 166 Q112 183 98 200" style="stroke-width:2.5;animation-delay:.25s"/>'+
+      '<path class="wv sl" d="M108 158 Q127 183 108 208" style="stroke-width:2.5;animation-delay:.5s"/>'+
+      '<rect x="8" y="231" width="108" height="28" rx="14" class="fa o" style="stroke-width:2.5"/>'+
+      '<text x="62" y="250" class="onacc" font-size="15" style="font-family:var(--f-body)">Asma · voix</text>'+
+      '<text x="200" y="292" class="sm">Image par image</text>'+
+      '</svg>';
+  })();
+
+  ART.campus='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+    '<rect x="26" y="44" width="238" height="206" rx="8" class="fk o"/>'+
+    '<path d="M26 74 H264" class="sl"/>'+
+    '<circle cx="42" cy="59" r="4.5" class="fc"/><circle cx="58" cy="59" r="4.5" class="fa"/><circle cx="74" cy="59" r="4.5" class="ft"/>'+
+    '<rect class="blk fa" x="40" y="88" width="210" height="48" rx="4"/>'+
+    '<rect class="blk ft" x="40" y="148" width="62" height="46" rx="4" style="animation-delay:.3s"/>'+
+    '<rect class="blk fc" x="114" y="148" width="62" height="46" rx="4" style="animation-delay:.6s"/>'+
+    '<rect class="blk fp" x="188" y="148" width="62" height="46" rx="4" style="animation-delay:.9s"/>'+
+    '<rect class="blk fl" x="120" y="208" width="130" height="8" rx="4" style="animation-delay:1.2s"/>'+
+    '<rect class="blk fl" x="160" y="226" width="90" height="8" rx="4" style="animation-delay:1.5s"/>'+
+    '<g class="sl flowline" style="stroke-width:2.5"><path d="M332 150 L314 96"/><path d="M332 150 L372 118"/><path d="M332 150 L376 192"/><path d="M332 150 L318 214"/></g>'+
+    '<circle class="ft o pn" cx="314" cy="96" r="11" style="animation-delay:.2s"/>'+
+    '<circle class="fc o pn" cx="372" cy="118" r="11" style="animation-delay:.6s"/>'+
+    '<circle class="ft o pn" cx="376" cy="192" r="11" style="animation-delay:1s"/>'+
+    '<circle class="fa o pn" cx="318" cy="214" r="11" style="animation-delay:1.4s"/>'+
+    '<circle class="fa o" cx="332" cy="150" r="17"/>'+
+    '<text x="332" y="276" class="sm">Réseau de clients</text>'+
+    '</svg>';
+
+  ART.europe='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+    '<path d="M130 156 q10 -9 20 0 t20 0 t20 0 t20 0 M176 176 q10 -9 20 0 t20 0 t20 0" class="sl" style="stroke-width:2;opacity:.3"/>'+
+    '<path id="route" d="M96 232 C 96 120, 300 190, 312 76" class="sl flowline"/>'+
+    '<circle cx="96" cy="232" r="9" class="fc o"/>'+
+    '<circle cx="312" cy="76" r="9" class="ft o"/>'+
+    '<text x="96" y="262" class="st">الجزائر</text>'+
+    '<text x="312" y="52" class="st">Europe</text>'+
+    '<g><path d="M14 0 L-9 -9 L-4 0 L-9 9 Z" class="fa o" style="stroke-width:2.5"/>'+
+    '<animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion></g>'+
+    '<g class="spin" style="transform-origin:60px 66px"><circle cx="60" cy="66" r="22" class="fk o"/>'+
+    '<circle cx="60" cy="54" r="5" class="fl"/><circle cx="70" cy="72" r="5" class="fl"/><circle cx="50" cy="72" r="5" class="fl"/><circle cx="60" cy="66" r="3" class="fi"/></g>'+
+    '<text x="60" y="108" class="sm">Projet en cours</text>'+
+    '</svg>';
+
+  (function(){
+    var w='';
+    var cols=[128,180,232], rows=[110,158], k=0;
+    rows.forEach(function(y){cols.forEach(function(x){
+      w+='<rect class="win fa o" x="'+x+'" y="'+y+'" width="40" height="34" style="animation-delay:'+(k*0.55).toFixed(2)+'s;stroke-width:2.5"/>'; k++;
+    })});
+    function person(x,cls,d){
+      return '<g class="walk" style="animation-delay:'+d+'s"><circle cx="'+x+'" cy="228" r="7" class="'+cls+' o" style="stroke-width:2"/><rect x="'+(x-7)+'" y="236" width="14" height="14" rx="4" class="'+cls+' o" style="stroke-width:2"/></g>';
+    }
+    ART.studio='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+      stars([[44,50,2.5],[352,46,3],[318,104,2],[70,110,2]])+
+      '<rect x="110" y="88" width="180" height="162" class="fk o"/>'+
+      '<rect x="128" y="58" width="144" height="32" class="fa o"/>'+
+      '<text x="200" y="80" class="onacc" font-size="17">Studio</text>'+
+      w+
+      '<rect x="182" y="204" width="36" height="46" class="fi o"/>'+
+      '<path d="M30 250 H370" class="sl"/>'+
+      person(360,'ft','0')+person(360,'fc','1.5')+person(360,'fa','3')+
+      '</svg>';
+  })();
+
+  ART.life='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+    stars([[40,40,2.5],[360,52,3],[250,40,2],[330,110,2],[28,120,2]])+
+    '<path d="M24 252 H376" class="sl"/>'+
+    '<rect x="70" y="162" width="112" height="90" class="fk o"/>'+
+    '<path d="M56 166 L126 108 L196 166 Z" class="fc o"/>'+
+    '<rect x="112" y="206" width="28" height="46" class="fa o"/>'+
+    '<rect class="win fa o" x="82" y="182" width="22" height="22" style="stroke-width:2.5"/>'+
+    '<rect class="win fa o" x="148" y="182" width="22" height="22" style="stroke-width:2.5;animation-delay:.8s"/>'+
+    '<g class="heart"><path d="M126 86 C104 70 110 52 126 62 C142 52 148 70 126 86 Z" class="fc o" style="stroke-width:2.5"/></g>'+
+    '<g class="drive">'+
+      '<path d="M248 224 L258 202 H302 L316 224 Z" class="fp o"/>'+
+      '<rect x="230" y="222" width="106" height="28" rx="9" class="ft o"/>'+
+      '<circle cx="258" cy="252" r="12" class="fi o"/><circle cx="258" cy="252" r="4" class="fl"/>'+
+      '<circle cx="310" cy="252" r="12" class="fi o"/><circle cx="310" cy="252" r="4" class="fl"/>'+
+    '</g></svg>';
+
+  ART.map='<svg viewBox="0 0 400 300" aria-hidden="true">'+
+    stars([[30,40,2.5],[200,40,3],[380,200,2.5],[40,168,2]])+
+    '<path id="jr" d="M50 252 C 110 252 130 232 130 202 S 90 162 90 142 S 150 112 190 112 S 270 112 280 152 S 340 102 350 62" class="sl flowline"/>'+
+    [[50,252,'fa'],[130,202,'fa'],[90,142,'fa'],[190,112,'fa'],[280,152,'fa'],[350,62,'ft']].map(function(n,i){
+      return '<circle cx="'+n[0]+'" cy="'+n[1]+'" r="15" class="'+n[2]+' o"/><text x="'+n[0]+'" y="'+(n[1]+5)+'" class="'+(i===5?'':'onacc')+'" style="font:700 14px var(--f-display);text-anchor:middle;'+(i===5?'fill:var(--on-teal)':'')+'">'+(i+1)+'</text>';
+    }).join('')+
+    '<circle r="6" class="fc o" style="stroke-width:2"><animateMotion dur="8s" repeatCount="indefinite"><mpath href="#jr"/></animateMotion></circle>'+
+    '<text x="200" y="288" class="sm">Chaque étape compte</text>'+
+    '</svg>';
+
+  var PAGES=[
+    {id:'secret',nav:'سرّي',eyebrow:'Confidentiel · à Asma',
+     title:'هذا سرّي وموجّه لكِ فقط',
+     lead:'لتقرئيه وحدكِ فقط. في الداخل خريطة حياتي كما أحلم بها، وأنتِ شريكتي في مشروع الرسوم المتحركة بصوتكِ.',
+     chips:['Confidentiel','6 étapes','Asma & moi'],
+     note:'ست محطات (<bdi>6 étapes</bdi>)، من اليوم حتى الحياة التي أحلم بها. في كل محطة مخطط صغير، ومهام مقترحة تضعين عليها علامة، وشعار يرافقني.'},
+    {id:'bac',nav:'Le Bac',eyebrow:'Étape 1 sur 6 · الآن',
+     title:'البكالوريا · Le Bac',
+     sum:'النجاح في البكالوريا بدعم والديّ وحاسوبي الخاص.',
+     lead:'أضع كل تركيزي الآن في الدراسة. بعد النجاح أبدأ بدعم مالي من والديّ، ومعي حاسوب خاص بي أبني عليه كل ما يأتي بعده.',
+     chips:['Le Bac','دعم الوالدين','Ordinateur'],
+     steps:[
+      {k:'s',t:'أدرس للـ Bac',d:'الهدف الآن واضح: النجاح، وكل شيء آخر ينتظر.'},
+      {k:'s',t:'أنجح',d:'من هنا تبدأ الخريطة كلها.'},
+      {k:'s',t:'دعم والديّ',d:'دعم مالي يغطي بدايتي ويمنحني الوقت للعمل.'},
+      {k:'g',t:'حاسوبي الخاص',d:'العتاد الذي أبني به مشروعي وأعمل به مع الـ clients.'}],
+     tasks:['مراجعة يومية منتظمة','حلّ مواضيع السنوات السابقة (annales)','نوم كافٍ وراحة قبل الامتحان'],
+     mantra:'Concentration avant tout'},
+    {id:'idea',nav:'الفكرة',eyebrow:'Étape 2 sur 6',
+     title:'فكرة الـ Animation',
+     sum:'مشروع الأنيميشن بصوت Asma حتى الإصدار والاستثمار.',
+     lead:'مشروع من ابتكاري، أبنيه يومًا بعد يوم، وشريكتي فيه Asma: تمثّل أصوات الشخصيات. أنا أصنع الفكرة والصورة، وهي تمنحها الصوت.',
+     chips:['Animation','Asma · voix','Projet quotidien'],
+     steps:[
+      {k:'s',t:'فكرة من ابتكاري',d:'قصة وشخصيات تخصني وحدي.'},
+      {k:'s',t:'أطوّرها كل يوم',d:'petit à petit، خطوة بعد خطوة، دون انقطاع.'},
+      {k:'s',t:'Asma تمثّل الأصوات',d:'صوتها يعطي الشخصيات حياتها وطباعها.'},
+      {k:'s',t:'أصدر العمل',d:'يصل إلى الجمهور لأول مرة.'},
+      {k:'d',t:'هل نجح؟',d:'إن نجح، تبدأ مرحلة الربح.'},
+      {k:'g',t:'أستثمر وأزيد',d:'أعيد الأرباح إلى المشروع لأجني أكثر، وقد تصل إلى الملايين.'}],
+     tasks:['كتابة القصة والشخصيات','رسم storyboard للمشهد الأول','تسجيل أصوات تجريبية مع Asma'],
+     mantra:'Image par image'},
+    {id:'campus',nav:'La Fac',eyebrow:'Étape 3 sur 6',
+     title:'الجامعة والـ Clients',
+     sum:'دراسة الإعلام وبناء دخل من الـ clients والـ Design.',
+     lead:'أدرس الإعلام في الجامعة، وبالتوازي أعمل مع الشركات والعملاء لأرفع دخلي وأموّل مشروع الرسوم المتحركة.',
+     chips:['La Fac','Clients','Web','Design'],
+     steps:[
+      {k:'s',t:'La Fac: علوم الإعلام',d:'أكمل دراستي وأتعلم كيف يصل المحتوى إلى الناس.'},
+      {k:'s',t:'مشاريع الشركات والـ clients',d:'مشاريع حقيقية أتعلم منها وأربح.'},
+      {k:'s',t:'الشبكات والمواقع (Web)',d:'أصمم لهم شبكاتهم ومواقعهم.'},
+      {k:'s',t:'الـ Design',d:'أصمم وأهندس المواقع بأسلوبي.'},
+      {k:'g',t:'قدرة مالية أكبر',d:'أرباح تغذّي مشروع الرسوم المتحركة.'}],
+     tasks:['بناء portfolio بأول أعمالي','تعلّم تصميم وهندسة المواقع','الحصول على أول client'],
+     mantra:'Apprendre en faisant'},
+    {id:'europe',nav:'Europe',eyebrow:'Étape 4 sur 6 · إن أمكن',
+     title:'الانطلاق إلى أوروبا',
+     sum:'الانتقال إلى أوروبا ومواصلة المشروع يوميًا.',
+     lead:'عندما تسمح الظروف أنتقل من الجزائر إلى أوروبا، ومشروعي يرافقني ولا يتوقف.',
+     chips:['إن أمكن','Europe','Projet يوميًا'],
+     steps:[
+      {k:'d',t:'هل تسمح الظروف؟',d:'إن أمكن، أبدأ التحضير.'},
+      {k:'s',t:'أخرج من الجزائر إلى أوروبا',d:'خطوة كبيرة نحو فرص أوسع.'},
+      {k:'s',t:'الـ Projet قيد التطوير يوميًا',d:'لا يتوقف يومًا واحدًا مهما تغيّر المكان.'},
+      {k:'g',t:'أستعد لفتح الاستوديو',d:'المرحلة التالية.'}],
+     tasks:['تجهيز الأوراق والإجراءات','تعلّم لغة البلد الجديد','مواصلة المشروع كل يوم'],
+     mantra:'Un pas à la fois'},
+    {id:'studio',nav:'Studio',eyebrow:'Étape 5 sur 6',
+     title:'أول Studio',
+     sum:'فتح أول مقر وبناء فريق وأول شركة.',
+     lead:'إذا نجح المشروع أفتتح أول مقر لي، وأجمع فريقًا يعمل معي.',
+     chips:['Studio','Équipe','1ère société'],
+     steps:[
+      {k:'d',t:'هل نجح المشروع؟',d:'عندها أبدأ البناء الحقيقي.'},
+      {k:'s',t:'أفتتح أول مقر',d:'مكان حقيقي أصنع فيه الرسوم المتحركة.'},
+      {k:'s',t:'أستقطب العمال',d:'فريق يعمل معي في أول شركة لي.'},
+      {k:'g',t:'شركتي الأولى تعمل',d:'حلم الاستوديو صار واقعًا.'}],
+     tasks:['اختيار المقر المناسب','وضع ميزانية الاستوديو','توظيف أول فريق'],
+     mantra:'Une équipe, un rêve'},
+    {id:'life',nav:'الحياة',eyebrow:'Étape 6 sur 6',
+     title:'حياتي السعيدة',
+     sum:'سيارة ثم منزل ثم الزواج وحياة سعيدة.',
+     lead:'بعد كل هذا البناء يأتي الاستقرار، وأعيش الحياة التي رسمتها.',
+     chips:['Voiture','Maison','Mariage'],
+     steps:[
+      {k:'s',t:'سيارة، أو أكثر',d:'ثمرة التعب الأولى.'},
+      {k:'s',t:'منزلي الخاص',d:'مكان أعود إليه مطمئنًا.'},
+      {k:'s',t:'الزواج',d:'أبدأ عائلتي.'},
+      {k:'g',t:'أكمل حياتي سعيدًا',d:'بإذن الله · Bonne vie'}],
+     tasks:['ادخار منتظم لسيارتي الأولى','اختيار المنزل المناسب','التخطيط للزواج'],
+     mantra:'Tout vient à point'},
+    {id:'map',nav:'Carte',eyebrow:'Vue d’ensemble',
+     title:'الخريطة الكاملة',
+     lead:'ست محطات تجمع كل ما أحلم به. اضغطي على أي محطة لتعودي إليها.',
+     chips:['6 étapes','3 مشاريع','حلم واحد'],
+     stops:[1,2,3,4,5,6],
+     mantra:'On y va'}
+  ];
+
+  var flow=document.getElementById('flow'), stage=document.getElementById('stage'), nowEl=document.getElementById('now');
+  var idx=0, CK={};
+  var chev='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function idxFromHash(){
+    var h=(location.hash||'').replace('#','');
+    var i=ORDER.indexOf(h);
+    return i<0?0:i;
+  }
+
+  function buildNav(){
+    var out='';
+    PAGES.forEach(function(p,i){
+      if(i) out+='<span class="link'+(i<=idx?' done':'')+'"></span>';
+      out+='<button type="button" class="node'+(i<idx?' done':'')+(i===0?' first':'')+'" data-i="'+i+'"'+(i===idx?' aria-current="step"':'')+' aria-label="'+p.nav+'">'+
+        '<span class="n">'+(i===0?'سر':(i===7?'★':num(i)))+'</span><span class="lab">'+p.nav+'</span></button>';
+    });
+    flow.innerHTML=out;
+    nowEl.textContent=idx===0?'Page 1 · confidentiel':(idx===7?"Vue d'ensemble · الخريطة الكاملة":('Étape '+num(idx)+' sur 6 · '+PAGES[idx].nav));
+  }
+
+  function markHtml(k,i){
+    if(k==='d') return '<div class="mk dec" aria-hidden="true">؟</div>';
+    if(k==='g') return '<div class="mk goal" aria-hidden="true"></div>';
+    return '<div class="mk" aria-hidden="true">'+num(i+1)+'</div>';
+  }
+
+  function getChecks(id){
+    if(!CK[id]){ try{CK[id]=JSON.parse(localStorage.getItem('dm-'+id)||'{}')||{}}catch(e){CK[id]={}} }
+    return CK[id];
+  }
+
+  function render(focus){
+    var p=PAGES[idx];
+    var html='<section class="page enter" aria-labelledby="ttl"><div class="txt-col">'+
+      '<div class="eyebrow">'+p.eyebrow+'</div>'+
+      '<h1 id="ttl" tabindex="-1">'+p.title+'</h1>'+
+      '<p class="lead">'+p.lead+'</p>';
+    if(p.chips) html+='<ul class="chips">'+p.chips.map(function(c){return '<li class="chip">'+c+'</li>'}).join('')+'</ul>';
+    if(p.steps){
+      html+='<ol class="chain">'+p.steps.map(function(s,i){
+        return '<li class="step" style="--i:'+i+'">'+markHtml(s.k,i)+'<div class="txt"><b>'+s.t+'</b>'+(s.d?'<span>'+s.d+'</span>':'')+'</div></li>';
+      }).join('')+'</ol>';
+    }
+    if(p.stops){
+      html+='<ol class="chain">'+p.stops.map(function(j,i){
+        var q=PAGES[j];
+        return '<li class="step" style="--i:'+i+'">'+markHtml(i===p.stops.length-1?'g':'s',i)+'<div class="txt"><button type="button" class="stop" data-i="'+j+'"><b>'+q.title+'</b><span>'+q.sum+'</span></button></div></li>';
+      }).join('')+'</ol>';
+    }
+    if(p.note) html+='<p class="lead" style="margin-top:18px;font-size:16px">'+p.note+'</p>';
+    html+='<div class="ctrl">';
+    if(idx===0){
+      html+='<button type="button" class="btn primary" data-go="1">افتحي الرسالة '+chev.replace('<svg','<svg class="flip"')+'</button>';
+    }else{
+      html+='<button type="button" class="btn" data-go="-1">'+chev+' السابق</button>';
+      if(idx<PAGES.length-1){
+        html+='<button type="button" class="btn primary" data-go="1">'+PAGES[idx+1].nav+' '+chev.replace('<svg','<svg class="flip"')+'</button>';
+      }else{
+        html+='<button type="button" class="btn primary" data-i="0">العودة إلى البداية</button>';
+      }
+    }
+    html+='</div></div><div class="art"><div class="frame">'+ART[p.id]+'</div></div>';
+    var ex='';
+    if(p.tasks){
+      var st=getChecks(p.id), done=0;
+      var rows=p.tasks.map(function(t,i){
+        if(st[i]) done++;
+        return '<label class="task"><input type="checkbox" class="dmchk" id="c-'+p.id+'-'+i+'" data-p="'+p.id+'" data-t="'+i+'"'+(st[i]?' checked':'')+'><span>'+t+'</span></label>';
+      }).join('');
+      ex+='<div class="tasks"><div class="tasks-h"><b>مهام مقترحة</b><span class="cnt" id="cnt">'+done+'/'+p.tasks.length+'</span></div>'+rows+'</div>';
+    }
+    if(p.mantra) ex+='<p class="mantra"><small>شعار المرحلة</small><b>'+p.mantra+'</b></p>';
+    if(ex) html+='<div class="extras">'+ex+'</div>';
+    html+='</section>';
+    stage.innerHTML=html;
+    buildNav();
+    if(reduce){var sv=stage.querySelector('svg'); if(sv&&sv.pauseAnimations) sv.pauseAnimations();}
+    if(focus){window.scrollTo(0,0); var h=document.getElementById('ttl'); if(h) h.focus({preventScroll:true});}
+  }
+
+  function go(i,focus){
+    if(i<0||i>=PAGES.length) return;
+    idx=i;
+    var h='#'+ORDER[i];
+    if(location.hash!==h){ try{history.replaceState(null,'',h)}catch(e){location.hash=h} }
+    render(focus);
+  }
+
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go],[data-i]');
+    if(!t) return;
+    if(t.hasAttribute('data-go')) go(idx+parseInt(t.getAttribute('data-go'),10),true);
+    else go(parseInt(t.getAttribute('data-i'),10),true);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.target&&/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+    if(e.key==='ArrowLeft') go(idx+1,true);
+    if(e.key==='ArrowRight') go(idx-1,true);
+  });
+  window.addEventListener('hashchange',function(){
+    var i=idxFromHash();
+    if(i!==idx){idx=i; render(true);}
+  });
+
+  document.addEventListener('change',function(e){
+    var t=e.target;
+    if(!t.classList||!t.classList.contains('dmchk')) return;
+    var id=t.getAttribute('data-p'), i=t.getAttribute('data-t'), o=getChecks(id);
+    if(t.checked) o[i]=true; else delete o[i];
+    try{localStorage.setItem('dm-'+id,JSON.stringify(o))}catch(err){}
+    var c=document.getElementById('cnt'), boxes=document.querySelectorAll('.dmchk'), k=0;
+    boxes.forEach(function(b){if(b.checked)k++});
+    if(c) c.textContent=k+'/'+boxes.length;
+  });
+
+  var tx=null, ty=null;
+  document.addEventListener('touchstart',function(e){tx=e.touches[0].clientX; ty=e.touches[0].clientY},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(tx===null) return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    tx=null;
+    if(Math.abs(dx)>80 && Math.abs(dx)>Math.abs(dy)*2){ go(idx+(dx<0?1:-1),true); }
+  },{passive:true});
+
+  idx=idxFromHash();
+  render(false);
+})();
+</script>
+
+</body>
+</html>
